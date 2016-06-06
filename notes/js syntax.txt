@@ -1,0 +1,127 @@
+Factoring the official standard. 
+
+* * *
+
+Numerals
+--------
+
+NumericLiteral::
+	DecimalLiteral
+	BinaryIntegerLiteral
+	OctalIntegerLiteral
+	HexIntegerLiteral
+
+DecimalLiteral::
+	DecimalIntegerLiteral afterDecimalInteger
+	.[0-9]+ ExponentPart?
+
+DecimalIntegerLiteral::
+	0|[1-9][0-9]*
+
+*afterDecimalInteger::
+	.[0-9]* ExponentPart?
+	ExponentPart?
+
+DecimalDigit::
+	[0-9]
+
+ExponentPart::
+	[eE][+-][0-9]+
+
+The SourceCharacter immediately following a NumericLiteral must not be an IdentifierStart or DecimalDigit.
+
+NOTE
+For example: 3in is an error and not the two input elements 3 and in.
+
+A conforming implementation, when processing strict mode code, must not extend, as described in B.1.1, the syntax of NumericLiteral to include LegacyOctalIntegerLiteral, nor extend the syntax of DecimalIntegerLiteral to include NonOctalDecimalIntegerLiteral.
+
+
+
+* * *
+
+
+LineTerminator :: 
+	'[\\n\\r\\u2028\\u2029]' --- <LF>|<CR>|<LS>|<PS>
+
+LineTerminatorSequence ::
+	'\\n|\\r\\n?|\\u2028|\\u2029' --- <LF> | <LS> | <PS> | <CR><LF> | <CR>[lookahead ≠ <LF>]
+
+SingleLineComment ::
+	// SingleLineCommentChar*
+
+SingleLineCommentChar ::
+	SourceCharacter but not LineTerminator
+
+
+* * * 
+
+Strings
+-------
+
+StringLiteral ::
+	" DoubleStringCharacter* "
+	' SingleStringCharacter* ' 
+
+DoubleStringCharacter ::
+	[^"\]   --- SourceCharacter but not one of " or \ or LineTerminator
+	EscapeSequence
+
+SingleStringCharacter ::
+	[^'\]    --- SourceCharacter but not one of ' or \ or LineTerminator
+	EscapeSequence
+
+EscapeSequence ::
+	\['"\bfnrtv] --- SingleEscapeCharacterEscapeSequence
+	\0 [lookahead ∉ DecimalDigit]
+	\x[0-9a-fA-F]{2} --- HexEscapeSequence
+	\u[0-9a-fA-F]{4} --- UnicodeEscapeSequence
+	\u{ [0-9a-fA-F]+ }  --- UnicodeEscapeSequence
+	\(?:'\\n|\\r\\n?|\\u2028|\\u2029') --- LineTerminatorSequence
+	\[1-9] --- error - legacy octal
+	'\[^\'"\\bfnrtv0-9xu\\n\\r\\u2028\\u2029]' --- NonEscapeCharacterEscapeSequence
+
+
+* * *
+
+Whitespace
+----------
+
+Whitespace::
+	U+0009 --- CHARACTER TABULATION	<TAB>
+	U+000B --- LINE TABULATION	<VT>
+	U+000C --- FORM FEED (FF)	<FF>
+	U+0020 --- SPACE	<SP>
+	U+00A0 --- NO-BREAK SPACE	<NBSP>
+	U+FEFF --- ZERO WIDTH NO-BREAK SPACE	<ZWNBSP>
+	Other category “Zs”	Any other Unicode “Separator, space” code point	<USP>
+
+
+
+* * *
+
+Identifiers
+-----------
+
+IdentifierName::
+	IdentifierStart IdentifierPart*
+
+IdentifierStart::
+	UnicodeIDStart
+	$
+	_
+	\ UnicodeEscapeSequence
+
+IdentifierPart::
+	UnicodeIDContinue
+	$
+	_
+	\ UnicodeEscapeSequence
+	<ZWNJ>
+	<ZWJ>
+
+UnicodeIDStart::
+	any Unicode code point with the Unicode property “ID_Start”
+
+UnicodeIDContinue::
+	any Unicode code point with the Unicode property “ID_Continue”
+

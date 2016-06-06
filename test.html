@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="style/tokens.css" type="text/css" media="screen">
+<script src="lib/lexer.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/editor.js" type="text/javascript" charset="utf-8"></script>
+<title>Javascript Syntax Highlight</title>
+</head>
+<body>
+
+<pre id="js" contenteditable=true style="height:500px;overflow:scroll">
+	
+0x12Askd	
+0
+01
+0b1012
+0o1019
+001
+.0191
+09.1
+9.1
+1E+1
+.1e1
+"asd\asd"
+"asd\nsd"
+"asd\0sd"
+'asd\u{00000}sadasd'
+'asd\ua000000}sadasd'
+"asdf\
+with a line
+continuation"
+
+"an invalid escape \1 sequence"
+
+/* asdasd ** ** /// */
+</pre>
+
+
+<script>
+	var el = document.getElementById('js')
+	new Editor(el)
+</script>
+</body>
+</html>
