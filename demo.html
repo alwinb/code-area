@@ -2,8 +2,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="style/tokens.css" type="text/css" media="screen">
-<script src="lib/lexer.js" type="text/javascript" charset="utf-8"></script>
-<script src="lib/editor.js" type="text/javascript" charset="utf-8"></script>
+<script src="build/code-area.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
 
@@ -20,7 +19,8 @@
 	<li>Just for quick demos, editing small pieces of code. For serious things, use CodeMirror</li>
 </ul>
 
-<pre id="sample" contenteditable=true style="height:400px; overflow:scroll">
+<h2>Javascript</h2>
+<pre id="js-sample" contenteditable=true style="height:400px; overflow:scroll">
 (function(){
 
 // DOM tree walker
@@ -218,6 +218,14 @@ window.Editor = Editor
 })()
 </pre>
 
+<h2>Plain text</h2>
+<p>This, you should not do, just use a textarea in that case ;)</p>
+<pre id="plain-sample" contenteditable=true style="height:150px; overflow:scroll">
+Works for plain text, too ;)
+</pre>
+
+
+
 <h2>How did you do that?</h2>
 <p>
 	After every 'contenteditable' edit the editor <em>parses the html content</em> of the element to a very simple internal document representation: 
@@ -230,7 +238,8 @@ window.Editor = Editor
 </p>
 
 <script>
-new Editor (document.getElementById('sample'))
+new CodeArea (document.getElementById('js-sample'), CodeArea.modes.js)
+new CodeArea (document.getElementById('plain-sample'), CodeArea.modes.plain)
 </script>
 </body>
 </html>

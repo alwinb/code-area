@@ -16,31 +16,51 @@ pre {
 	outline:none;
 }
 
-pre::selection, pre *::selection {
-	background-color:rgba(236, 246, 255, 0.18)
-}
+pre::selection, pre *::selection
+	{ background: rgba(236, 246, 255, 0.18) }
 
-pre::-moz-selection, pre *::-moz-selection {
-	background-color:rgba(236, 246, 255, 0.18)
-}
+pre::-moz-selection, pre *::-moz-selection
+	{ background: rgba(236, 246, 255, 0.18) }
 
 /* Javascript Tokens */
 
-.true,.false,.null,.value,.number,.boolean { color:#CF6A4C }
-.constructor { color:#B095AE }
-.param { color:#8499B8 }
-.comment, .beginComment, .commentData, .finishComment { color: #746D74 }
+.true,.false,.null,.value,.number,.boolean
+	{ color:#CF6A4C }
+
+.constructor
+	{ color:#B095AE }
+
+.param
+	{ color:#8499B8 }
+
+.comment, .beginComment, .commentData, .finishComment
+	{ color: #746D74 }
+
 .comment, .commentData {
 	font-family: Verdana, Sans-serif;
 	font-style:italic;
 }
 
-.operator, .control, .new { color:#DDB771 }
-.this { color:#8499B8 }
-.functionName { color:#B38243 }
-.beginString, .finishString, .stringChars { color: #9CAF78 }
-.charEscape, .hexEscape, .unicodeEscape, .nonEscape, .nullEscape, .lineContinuation, .invalidEscape { color:#DDF7AC }
-.function, .declaration { color:#FBF39E }
-.decimalInteger, .binaryInteger, .octalInteger, .fractionalPart, .hexInteger, .exponentPart { color:#E9784F }
+.operator, .control, .new
+	{ color:#DDB771 }
 
-.invalid, .invalidEscape {	background:#60315A }
+.this
+	{ color:#8499B8 }
+
+.functionName
+	{ color:#B38243 }
+
+.beginString, .finishString, .stringChars
+	{ color: #9CAF78 }
+
+.charEscape, .hexEscape, .unicodeEscape, .nonEscape, .nullEscape, .lineContinuation, .invalidEscape
+	{ color:#DDF7AC }
+
+.function, .declaration
+	{ color:#FBF39E }
+
+.decimalInteger, .binaryInteger, .octalInteger, .fractionalPart, .hexInteger, .exponentPart
+	{ color:#E9784F }
+
+.invalid, .invalidEscape
+	{ background:#60315A }
