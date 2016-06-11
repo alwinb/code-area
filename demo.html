@@ -2,8 +2,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="style/tokens.css" type="text/css" media="screen">
-<script src="lib/lexer.js" type="text/javascript" charset="utf-8"></script>
-<script src="lib/editor.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/code-area.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
 
@@ -120,11 +119,11 @@ function toSpan (token, doc) {
 
 
 
-// Editor
+// CodeArea
 // Wraps all of the above in a state container
 // with undo / redo management
 	
-function Editor (element) {
+function CodeArea (element) {
 	var elem = element
 		, undo_stack = []
 		, undo_index = -1
@@ -214,7 +213,7 @@ function keyName (evt) {
 	}
 }
 
-window.Editor = Editor
+window.CodeArea = CodeArea
 })()
 </pre>
 
@@ -230,7 +229,7 @@ window.Editor = Editor
 </p>
 
 <script>
-new Editor (document.getElementById('sample'))
+new CodeArea (document.getElementById('sample'), CodeArea.modes.js)
 </script>
 </body>
 </html>
