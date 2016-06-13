@@ -8,6 +8,11 @@ The code is editable if the original DOM element has contenteditable=true.
 * Arbitrary styles, including non-monospace fonts and different line heights
 * Just for quick demos, editing small pieces of code. For serious things, use CodeMirror
 
+Demos
+-----
+
+* [Area](http://alwinb.github.io/code-area/demo.html)
+* [Repl](http://alwinb.github.io/code-area/repl.html)
 
 How did you do that?
 --------------------
