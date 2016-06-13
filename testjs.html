@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="style/style.css" type="text/css" media="all">
+<link rel="stylesheet" href="style/js.css" type="text/css" media="all">
+<script src="build/code-area.min.js"></script>
+<title>Javascript Syntax Highlight</title>
+</head>
+<body>
+	
+<h1>Javascript Syntax Highlighting Test</h1>
+
+<pre id="js" contenteditable=true style="height:500px;overflow:scroll">
+0x12Askd	
+0
+01
+0b1012
+0o1019
+001
+.0191
+09.1
+9.1
+1E+1
+.1e1
+"asd\asd"
+"asd\nsd"
+"asd\0sd"
+'asd\u{00000}sadasd'
+'asd\ua000000}sadasd'
+
+"string with\
+line continuation"
+
+"string with bad
+line continuation"
+
+"Invalid escape \1 sequence"
+
+/*** multiline ** comment ***/
+
+function (param1, /* comment */ param2) {
+	/* comment in parameter list (FIXME) */
+}
+</pre>
+
+
+<script>
+	var el = document.getElementById('js')
+	new CodeArea(el, CodeArea.modes.js)
+</script>
+</body>
+</html>
