@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="style/style.css" type="text/css" media="screen">
+	<link rel="stylesheet" href="style/js.css" type="text/css" media="screen">
+	<style>
+
+	.prompt, .input, .prompt input, pre, .output {
+		color:white;
+		background:#202020;
+		font-family:Menlo, Monaco, Monospace;
+		font-size:12px;
+		line-height:17px;
+		tab-size:2;
+		-moz-tab-size:2;
+		padding:0;
+		margin:0;
+		outline:none;
+	}
+	.prompt pre {
+		margin-left:20px;
+	}
+
+	pre::selection, pre *::selection
+		{ background: rgba(236, 246, 255, 0.18) }
+
+	pre::-moz-selection, pre *::-moz-selection
+		{ background: rgba(236, 246, 255, 0.18) }
+
+	html { width:900px;}
+	#repl {
+		padding:6px 4px;
+		background:#202020;
+		color:white;
+		overflow:auto;
+		height:400px;
+	}
+	</style>
+	<script src="./lib/code-area.min.js"></script>
+	<script src="./lib/repl.js"></script>
+	<title>JavaScript REPL</title>
+</head>
+<body>
+
+<h1>Read Evaluate Print Loop</h1>
+<p>A javascript REPL with syntax colouring</p>
+
+<div id="repl">
+</div>
+
+
+<script>
+
+function print (o) {
+ 	return o+''
+}
+
+function clear () {
+	repl.clear()
+ 	return { type:'html_raw', value:'' } }
+
+function _eval (input) {
+	try {
+		return eval.call(null, input)
+	}
+	catch (e) {
+		return e } }
+
+repl = new Repl(document.getElementById('repl'), _eval)
+window.onclick = repl.focus
+repl.focus()
+repl.exec('var id = function (x) { return x }')
+repl.exec('id (2*2)')
+</script>
+</body>
+</html>

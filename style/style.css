@@ -1,0 +1,25 @@
+html{
+	width:800px;
+	margin:20px;
+	font-family:Helvetica, Arial, Sans-Serif;
+}
+
+pre { 
+	color:white;
+	background:#202020;
+	font-family:Menlo, Monaco, Monospace;
+	font-size:12px;
+	line-height:16px;
+	tab-size:2;
+	-moz-tab-size:2;
+	padding:6px 4px;
+	margin:0;
+	outline:none;
+}
+
+pre::selection, pre *::selection
+	{ background: rgba(236, 246, 255, 0.18) }
+
+pre::-moz-selection, pre *::-moz-selection
+	{ background: rgba(236, 246, 255, 0.18) }
+
